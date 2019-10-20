@@ -37,6 +37,10 @@ export class PainelComponent implements OnInit {
 
       this.progresso = this.progresso + (100 / this.frases.length);
 
+      if (this.rodada === 4) {
+        alert('Concluiu as traduções com sucesso');
+      }
+
       this.atualizaRodada();
     } else {
       this.tentativas--;
