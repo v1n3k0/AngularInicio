@@ -1,0 +1,2 @@
+Criar Servidor apache no docker
+docker run -dit --name web-xxxxx -p 8080:80 -v /Apache/httpd:/usr/local/apache2/htdocs/ httpd:2.4
