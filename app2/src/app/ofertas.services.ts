@@ -56,4 +56,15 @@ export class OfertasService {
     public getOfertas(): Array<any> {
         return this.ofertas;
     }
+
+    public getOfertas2(): Promise<Array<Oferta>> {
+        return new Promise((resolve, reject) => {
+            const certo = true;
+            if (certo) {
+                resolve(this.ofertas);
+            } else {
+                reject({ erro: 401, mensagem: 'Servidor não disponivel' });
+            }
+        });
+    }
 }
