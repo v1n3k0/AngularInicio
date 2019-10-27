@@ -1,4 +1,5 @@
 import { Oferta } from './shared/oferta.model';
+import { resolve, reject } from 'q';
 
 export class OfertasService {
 
@@ -61,10 +62,19 @@ export class OfertasService {
         return new Promise((resolve, reject) => {
             const certo = true;
             if (certo) {
+                console.log('Esperando 3 segundos');
                 setTimeout(() => resolve(this.ofertas), 3000);
             } else {
                 reject({ erro: 401, mensagem: 'Servidor não disponivel' });
             }
+        }).then((ofertas: Oferta[]) => {
+            console.log('Primeiro then');
+            return ofertas;
+        }).then((ofertas: Oferta[]) => {
+            return new Promise((resolve2, reject2) => {
+                console.log('Segundo then esperando 3 segundos');
+                setTimeout(() => resolve2(ofertas), 3000);
+            });
         });
     }
 }
