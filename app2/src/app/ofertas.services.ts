@@ -51,7 +51,7 @@ export class OfertasService {
                 { url: '/assets/ofertas/3/img6.jpg' }
             ]
         }
-    ]
+    ];
 
     public getOfertas(): Array<any> {
         return this.ofertas;
