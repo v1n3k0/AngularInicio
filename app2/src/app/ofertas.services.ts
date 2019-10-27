@@ -61,7 +61,7 @@ export class OfertasService {
         return new Promise((resolve, reject) => {
             const certo = true;
             if (certo) {
-                resolve(this.ofertas);
+                setTimeout(() => resolve(this.ofertas), 3000);
             } else {
                 reject({ erro: 401, mensagem: 'Servidor não disponivel' });
             }

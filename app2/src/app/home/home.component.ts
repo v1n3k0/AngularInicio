@@ -18,10 +18,12 @@ export class HomeComponent implements OnInit {
     //this.ofertas = this.ofertasServices.getOfertas();
 
     this.ofertasServices.getOfertas2()
-      .then(
-        (ofertas: Oferta[]) => { this.ofertas = ofertas; },
-        (erro: any) => { console.log(erro); }
-      );
+      .then((ofertas: Oferta[]) => {
+        this.ofertas = ofertas;
+      })
+      .catch((erro: any) => {
+        console.log(erro);
+      });
   }
 
 }
