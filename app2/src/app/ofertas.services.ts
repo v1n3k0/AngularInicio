@@ -8,7 +8,7 @@ export class OfertasService {
     constructor(private http: HttpClient) { }
 
     public getOfertas() {
-        return this.http.get<Oferta[]>('http://localhost:3000/ofertas')
+        return this.http.get<Oferta[]>('http://localhost:3000/ofertas?destaque=true')
         .toPromise()
         .then((res: any) => res);
     }
