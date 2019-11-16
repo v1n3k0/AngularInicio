@@ -15,7 +15,7 @@ export class DiversaoComponent implements OnInit {
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
-    this.ofertasService.getOfertaPorCategoria('restaurante')
+    this.ofertasService.getOfertaPorCategoria('diversao')
       .then((ofertas: Oferta[]) => {
         this.ofertas = ofertas;
       });
