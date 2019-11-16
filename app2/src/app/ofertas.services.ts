@@ -9,7 +9,13 @@ export class OfertasService {
 
     public getOfertas() {
         return this.http.get<Oferta[]>('http://localhost:3000/ofertas?destaque=true')
-        .toPromise()
-        .then((res: any) => res);
+            .toPromise()
+            .then((res: any) => res);
+    }
+
+    public getOfertaPorCategoria(categoria: string) {
+        return this.http.get<Oferta[]>(`http://localhost:3000/ofertas?categoria=${categoria}`)
+            .toPromise()
+            .then((res: any) => res);
     }
 }
