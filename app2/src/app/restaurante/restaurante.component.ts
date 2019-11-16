@@ -12,12 +12,14 @@ import { from } from 'rxjs';
 })
 export class RestauranteComponent implements OnInit {
 
+  public ofertas: Oferta[];
+
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
     this.ofertasService.getOfertaPorCategoria('restaurante')
       .then((ofertas: Oferta[]) => {
-        console.log(ofertas);
+        this.ofertas = ofertas;
       });
   }
 
