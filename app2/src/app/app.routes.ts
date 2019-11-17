@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
         children: [
             { path: '', component: ComoUsarComponent },
             { path: 'como-usar', component: ComoUsarComponent },
-            { path: 'ondefica', component: OndeFicaComponent },
+            { path: 'onde-fica', component: OndeFicaComponent },
         ]
     },
 ];
