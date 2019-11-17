@@ -20,7 +20,7 @@ export class OfertaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ofertasService.getOfertaPorId(this.route.snapshot.params['id'])
+    this.ofertasService.getOfertaPorId(this.route.snapshot.params.id)
     .then((oferta: Oferta) => {
       this.oferta = oferta;
     });
