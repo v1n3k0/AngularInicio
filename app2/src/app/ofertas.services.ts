@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { URLAPI } from './app.api';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 
 @Injectable()
 export class OfertasService {
@@ -43,6 +43,6 @@ export class OfertasService {
 
     public pesquisaOfertas(termo: string): Observable<Oferta[]> {
         return this.http.get(`${URLAPI}/ofertas?descricao_oferta_like=${termo}`)
-        .pipe(map((resposta: any) => resposta.shift()));
+        .pipe(map((resposta: any) => resposta.shift()), retry(10));
     }
 }
