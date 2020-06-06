@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { OfertasService } from '../ofertas.services'
 
 @Component({
   selector: 'app-topo',
   templateUrl: './topo.component.html',
-  styleUrls: ['./topo.component.css']
+  styleUrls: ['./topo.component.css'],
+  providers: [OfertasService]
 })
 export class TopoComponent implements OnInit {
 
-  constructor() { }
+  constructor( private ofertasService: OfertasService) { }
 
   ngOnInit() {
   }
 
-  public pesquisa(event: Event){
-    console.log((<HTMLInputElement>event.target).value);
+  public pesquisa(termoDaBusca: string) {
+    console.log(termoDaBusca);
   }
 
 }

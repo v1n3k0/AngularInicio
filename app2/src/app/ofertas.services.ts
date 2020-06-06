@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { URLAPI } from './app.api';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class OfertasService {
@@ -37,5 +39,10 @@ export class OfertasService {
         return this.http.get<string>(`${URLAPI}/onde-fica?id=${id}`)
             .toPromise()
             .then((res: any) => res.shift().descricao);
+    }
+
+    public pesquisaOfertas(termo: string): Observable<Oferta[]> {
+        return this.http.get(`${URLAPI}/ofertas?descricao_oferta=${termo}`)
+        .pipe(map((resposta: any) => resposta.json()));
     }
 }
