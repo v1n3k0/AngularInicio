@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.services';
 import { Observable, Subject, of } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-topo',
@@ -26,6 +26,10 @@ export class TopoComponent implements OnInit {
           return of<Oferta[]>([]);
         }
         return this.ofertasService.pesquisaOfertas(termo);
+      }),
+      catchError((erro: any) => {
+        console.log(erro);
+        return of<Oferta[]>([]);
       })
     );
 
