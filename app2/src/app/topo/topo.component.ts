@@ -14,6 +14,7 @@ export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>;
   private subjectPesquisa: Subject<string> = new Subject<string>();
+  public responseOferta: Oferta[];
 
   constructor(private ofertasService: OfertasService) { }
 
@@ -33,7 +34,10 @@ export class TopoComponent implements OnInit {
       })
     );
 
-    this.ofertas.subscribe((ofertas: Oferta[]) => console.log(ofertas));
+    this.ofertas.subscribe((ofertas: Oferta[]) => {
+      console.log(ofertas);
+      this.responseOferta = ofertas;
+    });
   }
 
   public pesquisa(termoDaBusca: string) {

@@ -2,17 +2,18 @@
   <nav class="navbar navbar-light bg-light">
     <div class="container">
       <div class="col-md-4">
-        <a class="navbar-brand" [routerLink]="['']">
-          <img src="/assets/logo.png" />
-        </a>
+        <!-- <a class="navbar-brand" [routerLink]="['']"> -->
+        <img src="/assets/logo.png" />
+        <!-- </a> -->
       </div>
       <div class="col-md-6">
-        <input 
-        type="text" 
-        class="form-control" 
-        placeholder="Pesquise por ofertas..."
-        #termoDaPesquisa
-        (keyup)="pesquisa(termoDaPesquisa.value)">
+        <input type="text" class="form-control" placeholder="Pesquise por ofertas..." #termoDaPesquisa
+          (keyup)="pesquisa(termoDaPesquisa.value)">
+        <ul class="list-group resultPesquisa">
+          <li class="list-group-item" *ngFor="let oferta of responseOferta">
+            {{ oferta.titulo }}
+          </li>
+        </ul>
       </div>
       <div class="col-md-2">
         <a a href="#"><img src="/assets/carrinho.png" /></a>
