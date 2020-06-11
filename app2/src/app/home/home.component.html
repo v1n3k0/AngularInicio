@@ -14,8 +14,8 @@
         <img class="card-img-top" [src]="oferta.imagens[0].url">
         <div class="card-body">
           <h4 class="card-title">{{ oferta.titulo }}</h4>
-          <p class="card-text">{{oferta.descricaoOferta}}</p>
-          <p class="preco">{{oferta.preco}}</p>
+          <p class="card-text">{{oferta.descricao_oferta}}</p>
+          <p class="preco">{{oferta.valor | currency: 'BRL': true}}</p>
           <a [routerLink]="['/oferta/', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
         </div>
       </div>
