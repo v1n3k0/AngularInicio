@@ -11,7 +11,7 @@
           (keyup)="pesquisa(termoDaPesquisa.value)">
         <ul class="list-group resultPesquisa">
           <li class="list-group-item" *ngFor="let oferta of responseOferta">
-            {{ oferta.titulo }}
+            {{ oferta.titulo | descricaoReduzida }}
           </li>
         </ul>
       </div>
