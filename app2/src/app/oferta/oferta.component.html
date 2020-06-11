@@ -44,15 +44,15 @@
 
   </div>
 
-  <div class="row" style="margin-top: 25px; margin-bottom: 150px;">
+  <div class="row" style="margin-top: 25px; margin-bottom: 150px;" *ngIf="oferta !== undefined">
     <div class="col">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="como-usar" data-toggle="tab" href="#como-usar" role="tab"
+          <a class="nav-link {‌{ abaInicialAtiva ? 'active' : '' }}" [routerLink]="['como-usar', oferta.id]" data-toggle="tab" href="#como-usar" role="tab"
             aria-selected="true">Como usar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="onde-fica" data-toggle="tab" href="#onde-fica" role="tab"
+          <a class="nav-link" (click)="desabilitaAbaInicial()" [routerLink]="['onde-fica', oferta.id]" data-toggle="tab" href="#onde-fica" role="tab"
             aria-controls="profile" aria-selected="false">Onde fica</a>
         </li>
       </ul>
