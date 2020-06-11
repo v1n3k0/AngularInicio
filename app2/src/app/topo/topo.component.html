@@ -3,7 +3,7 @@
     <div class="container">
       <div class="col-md-4">
         <a class="navbar-brand" [routerLink]="['']">
-        <img src="/assets/logo.png" />
+          <img src="/assets/logo.png" />
         </a>
       </div>
       <div class="col-md-6">
@@ -11,7 +11,9 @@
           (keyup)="pesquisa(termoDaPesquisa.value)">
         <ul class="list-group resultPesquisa">
           <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-            {{ oferta.titulo | descricaoReduzida }}
+            <a [routerLink]="['/oferta', oferta.id]" (click)="limparPesquisa()">
+              {{ oferta.titulo | descricaoReduzida }}
+            </a>
           </li>
         </ul>
       </div>
