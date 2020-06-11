@@ -14,13 +14,12 @@ export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>;
   private subjectPesquisa: Subject<string> = new Subject<string>();
-  public responseOferta: Oferta[];
 
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
     this.ofertas = this.subjectPesquisa.pipe(
-      debounceTime(1000),
+      debounceTime(850),
       distinctUntilChanged(),
       switchMap((termo: string) => {
         if (termo.trim() === '') {
@@ -29,15 +28,9 @@ export class TopoComponent implements OnInit {
         return this.ofertasService.pesquisaOfertas(termo);
       }),
       catchError((erro: any) => {
-        console.log(erro);
         return of<Oferta[]>([]);
       })
     );
-
-    this.ofertas.subscribe((ofertas: Oferta[]) => {
-      console.log(ofertas);
-      this.responseOferta = ofertas;
-    });
   }
 
   public pesquisa(termoDaBusca: string) {

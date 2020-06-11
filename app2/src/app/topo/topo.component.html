@@ -10,7 +10,7 @@
         <input type="text" class="form-control" placeholder="Pesquise por ofertas..." #termoDaPesquisa
           (keyup)="pesquisa(termoDaPesquisa.value)">
         <ul class="list-group resultPesquisa">
-          <li class="list-group-item" *ngFor="let oferta of responseOferta">
+          <li class="list-group-item" *ngFor="let oferta of ofertas | async">
             {{ oferta.titulo | descricaoReduzida }}
           </li>
         </ul>
