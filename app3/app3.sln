@@ -15,17 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{FD0B34B2-8010-495B-BBFC-D5816315A227}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{A0129339-1F28-4D3A-A8A8-4423EFFABA5F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{A0129339-1F28-4D3A-A8A8-4423EFFABA5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Api", "src\PassaroUrbano.Api\PassaroUrbano.Api.csproj", "{BF4627FB-8383-482A-B643-CAF0CF672F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Application", "src\PassaroUrbano.Application\PassaroUrbano.Application.csproj", "{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Application", "src\PassaroUrbano.Application\PassaroUrbano.Application.csproj", "{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Domain", "src\PassaroUrbano.Domain\PassaroUrbano.Domain.csproj", "{69372033-9735-4D3D-80CF-5719A57127D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Domain", "src\PassaroUrbano.Domain\PassaroUrbano.Domain.csproj", "{69372033-9735-4D3D-80CF-5719A57127D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Infra.Data", "src\PassaroUrbano.Infra.Data\PassaroUrbano.Infra.Data.csproj", "{48089C7F-986A-45A4-B60D-ADB4E0D4C071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Infra.Data", "src\PassaroUrbano.Infra.Data\PassaroUrbano.Infra.Data.csproj", "{48089C7F-986A-45A4-B60D-ADB4E0D4C071}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Api", "src\PassaroUrbano.Api\PassaroUrbano.Api.csproj", "{BD13A62A-CE77-437A-AB1E-08F3C8449821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Infra.IoC", "src\PassaroUrbano.Infra.IoC\PassaroUrbano.Infra.IoC.csproj", "{91A49818-6444-49EC-8E8B-A8BE3203CA32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Infra.IoC", "src\PassaroUrbano.Infra.IoC\PassaroUrbano.Infra.IoC.csproj", "{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BF4627FB-8383-482A-B643-CAF0CF672F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF4627FB-8383-482A-B643-CAF0CF672F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF4627FB-8383-482A-B643-CAF0CF672F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF4627FB-8383-482A-B643-CAF0CF672F56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +45,14 @@ Global
 		{48089C7F-986A-45A4-B60D-ADB4E0D4C071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48089C7F-986A-45A4-B60D-ADB4E0D4C071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48089C7F-986A-45A4-B60D-ADB4E0D4C071}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91A49818-6444-49EC-8E8B-A8BE3203CA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91A49818-6444-49EC-8E8B-A8BE3203CA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91A49818-6444-49EC-8E8B-A8BE3203CA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91A49818-6444-49EC-8E8B-A8BE3203CA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD13A62A-CE77-437A-AB1E-08F3C8449821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD13A62A-CE77-437A-AB1E-08F3C8449821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD13A62A-CE77-437A-AB1E-08F3C8449821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD13A62A-CE77-437A-AB1E-08F3C8449821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,11 +60,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CAA9D7EE-446B-474C-A62E-997EEED648C8} = {15C5213F-AE86-4C28-AAC0-2D2CF754502F}
 		{FD0B34B2-8010-495B-BBFC-D5816315A227} = {15C5213F-AE86-4C28-AAC0-2D2CF754502F}
-		{BF4627FB-8383-482A-B643-CAF0CF672F56} = {A0129339-1F28-4D3A-A8A8-4423EFFABA5F}
 		{29213CDC-B3E9-4C8B-8865-E7DEB325BE2C} = {7AECAF6B-0E41-494E-8EF9-A1D786D9A5FD}
 		{69372033-9735-4D3D-80CF-5719A57127D0} = {F8316044-5EAB-4734-B733-A9CCD381B469}
 		{48089C7F-986A-45A4-B60D-ADB4E0D4C071} = {CAA9D7EE-446B-474C-A62E-997EEED648C8}
-		{91A49818-6444-49EC-8E8B-A8BE3203CA32} = {FD0B34B2-8010-495B-BBFC-D5816315A227}
+		{BD13A62A-CE77-437A-AB1E-08F3C8449821} = {A0129339-1F28-4D3A-A8A8-4423EFFABA5F}
+		{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E} = {FD0B34B2-8010-495B-BBFC-D5816315A227}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFD89FCE-C45A-46E6-BCE7-C20F4244AEEF}
