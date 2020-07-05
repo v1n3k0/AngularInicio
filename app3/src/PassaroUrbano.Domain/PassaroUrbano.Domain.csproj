@@ -8,7 +8,6 @@
     <Folder Include="Resources\" />
     <Folder Include="ValueObjects\" />
     <Folder Include="Validations\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

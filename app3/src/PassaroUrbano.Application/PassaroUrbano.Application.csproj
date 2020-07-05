@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppServices\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="AppServices\Pedido\" />
+    <Folder Include="Interfaces\Pedido\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PassaroUrbano.Domain\PassaroUrbano.Domain.csproj" />
   </ItemGroup>
 
 </Project>

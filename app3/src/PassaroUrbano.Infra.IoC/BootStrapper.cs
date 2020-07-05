@@ -1,7 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PassaroUrbano.Application.AppServices.Oferta;
+using PassaroUrbano.Application.Interfaces.Oferta;
+using PassaroUrbano.Domain.Interfaces.Domain.Oferta;
+using PassaroUrbano.Domain.Interfaces.Domain.Pedido;
 using PassaroUrbano.Domain.Interfaces.Repositories;
 using PassaroUrbano.Domain.Interfaces.Repositories.Oferta;
 using PassaroUrbano.Domain.Interfaces.Repositories.Pedido;
+using PassaroUrbano.Domain.Services.Oferta;
+using PassaroUrbano.Domain.Services.Pedido;
 using PassaroUrbano.Infra.Data;
 using PassaroUrbano.Infra.Data.Repositories;
 using PassaroUrbano.Infra.Data.Repositories.Oferta;
@@ -21,12 +27,17 @@ namespace PassaroUrbano.Infra.IoC
 
         private static void Application(IServiceCollection services)
         {
-
+            //Oferta
+            services.AddTransient<IOfertaAppService, OfertaAppService>();
         }
 
         private static void Domain(IServiceCollection services)
         {
+            //Oferta
+            services.AddTransient<IOfertaService, OfertaService>();
 
+            //Pedido
+            services.AddTransient<IPedidoService, PedidoService>();
         }
 
         private static void Infra(IServiceCollection services)
