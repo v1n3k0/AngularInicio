@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace PassaroUrbano.Domain.Interfaces.Repositories
 {
-    public interface IBaseRepository<T> where T : BaseEntity
+    public interface IBaseRepository<T> : IDisposable where T : BaseEntity
     {
         void Adcionar(ref T entity);
         bool Atualizar(T entity);
