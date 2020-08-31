@@ -1,0 +1,86 @@
+BEGIN TRANSACTION;
+
+IF (OBJECT_ID('ComoUsar') IS NOT NULL )
+BEGIN
+  DROP TABLE ComoUsar;
+END
+
+IF (OBJECT_ID('OndeFica') IS NOT NULL )
+BEGIN
+  DROP TABLE OndeFica;
+END
+
+IF (OBJECT_ID('Oferta') IS NOT NULL )
+BEGIN
+  DROP TABLE Oferta;
+END
+
+IF (OBJECT_ID('Imagem') IS NOT NULL )
+BEGIN
+  DROP TABLE Imagem;
+END
+
+IF (OBJECT_ID('Categoria') IS NOT NULL )
+BEGIN
+  DROP TABLE Categoria;
+END
+
+CREATE TABLE ComoUsar(
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataCadastro DATETIME NOT NULL,
+	DataAlteracao DATETIME NULL,
+	DataRemocao DATETIME NULL,
+	Descricao VARCHAR(500) NULL
+);
+
+CREATE TABLE OndeFica(
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataCadastro DATETIME NOT NULL,
+	DataAlteracao DATETIME NULL,
+	DataRemocao DATETIME NULL,
+	Descricao VARCHAR(500) NULL
+);
+
+CREATE TABLE Oferta(
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataCadastro DATETIME NOT NULL,
+	DataAlteracao DATETIME NULL,
+	DataRemocao DATETIME NULL,
+	Titulo VARCHAR(100) NULL,
+	Descricao VARCHAR(500) NULL,
+	Anuciante VARCHAR(100) NULL,
+	Valor DECIMAL(12,3) NULL,
+	Destaque BIT NULL,
+	IdComoUsar INT NULL,
+	IdOndeFica INT NULL
+);
+
+ALTER TABLE Oferta ADD CONSTRAINT FK_Oferta_ComoUsar_IdComoUsar FOREIGN KEY (IdComoUsar) REFERENCES ComoUsar(Id);
+ALTER TABLE Oferta ADD CONSTRAINT FK_Oferta_OndeFica_IdOndeFica FOREIGN KEY (IdOndeFica) REFERENCES OndeFica(Id);
+
+CREATE TABLE Imagem(
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataCadastro DATETIME NOT NULL,
+	DataAlteracao DATETIME NULL,
+	DataRemocao DATETIME NULL,
+	IdOferta INT NOT NULL,
+	Url VARCHAR(200) NULL
+);
+
+ALTER TABLE Imagem ADD CONSTRAINT FK_Imagem_Oferta_IdOferta FOREIGN KEY (IdOferta) REFERENCES Oferta(Id);
+
+CREATE TABLE Categoria(
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataCadastro DATETIME NOT NULL,
+	DataAlteracao DATETIME NULL,
+	DataRemocao DATETIME NULL,
+	Nome VARCHAR(100) NULL,
+	Descricao VARCHAR(100) NULL
+);
+
+INSERT INTO Categoria (DataCadastro, DataAlteracao, Nome, Descricao) VALUES
+(GETDATE(), GETDATE(), 'diversao', 'Diversão'),
+(GETDATE(), GETDATE(), 'restaurante', 'Restaurante');
+
+--ROLLBACK;
+COMMIT;
