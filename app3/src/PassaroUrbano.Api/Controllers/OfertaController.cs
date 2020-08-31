@@ -14,10 +14,10 @@ namespace PassaroUrbano.Api.Controllers
             _ofertaAppService = ofertaAppService;
         }
 
-        [HttpGet]
-        public ObterOfertaResponseViewModel Get(int id)
+        [HttpGet("")]
+        public ActionResult Get(int id)
         {
-            return _ofertaAppService.Obter(id);
+            return Ok(_ofertaAppService.Obter(id));
         }
     }
 }
