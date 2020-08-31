@@ -2,9 +2,9 @@
 
 namespace PassaroUrbano.Infra.Data.Mappers.Oferta
 {
-    public class ComoUsarMap : MappingBase<ComoUsar>
+    public class ComoUsarMap : BaseMapping<ComoUsar>
     {
-        public ComoUsarMap()
+        public ComoUsarMap() : base()
         {
             ToTable("ComoUsar");
         }

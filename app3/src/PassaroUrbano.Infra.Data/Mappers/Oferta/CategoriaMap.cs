@@ -2,9 +2,9 @@
 
 namespace PassaroUrbano.Infra.Data.Mappers.Oferta
 {
-    public class CategoriaMap : MappingBase<Categoria>
+    public class CategoriaMap : BaseMapping<Categoria>
     {
-        public CategoriaMap()
+        public CategoriaMap() : base()
         {
             ToTable("Categoria");
         }

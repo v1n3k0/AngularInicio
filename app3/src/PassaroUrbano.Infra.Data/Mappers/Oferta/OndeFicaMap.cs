@@ -2,9 +2,9 @@
 
 namespace PassaroUrbano.Infra.Data.Mappers.Oferta
 {
-    public class OndeFicaMap : MappingBase<OndeFica>
+    public class OndeFicaMap : BaseMapping<OndeFica>
     {
-        public OndeFicaMap()
+        public OndeFicaMap() : base()
         {
             ToTable("OndeFica");
         }

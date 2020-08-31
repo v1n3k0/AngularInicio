@@ -1,8 +1,8 @@
 ﻿namespace PassaroUrbano.Infra.Data.Mappers.Oferta
 {
-    public class OfertaMap : MappingBase<Domain.Entities.Oferta.Oferta>
+    public class OfertaMap : BaseMapping<Domain.Entities.Oferta.Oferta>
     {
-        public OfertaMap()
+        public OfertaMap() : base()
         {
             ToTable("Oferta");
 

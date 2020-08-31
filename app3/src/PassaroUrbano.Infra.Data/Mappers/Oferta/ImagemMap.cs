@@ -2,9 +2,9 @@
 
 namespace PassaroUrbano.Infra.Data.Mappers.Oferta
 {
-    public class ImagemMap : MappingBase<Imagem>
+    public class ImagemMap : BaseMapping<Imagem>
     {
-        public ImagemMap()
+        public ImagemMap() : base()
         {
             ToTable("Imagem");
         }

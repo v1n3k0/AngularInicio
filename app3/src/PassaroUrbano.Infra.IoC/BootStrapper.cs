@@ -20,9 +20,9 @@ namespace PassaroUrbano.Infra.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            Application(services);
-            Domain(services);
             Infra(services);
+            Domain(services);
+            Application(services);
         }
 
         private static void Application(IServiceCollection services)
@@ -43,9 +43,9 @@ namespace PassaroUrbano.Infra.IoC
         private static void Infra(IServiceCollection services)
         {
             //Base
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IDbConnection>(x => new System.Data.SqlClient.SqlConnection("Data Source=.;Initial Catalog=DATABASE_NAME;Integrated Security=True;"));
             RegisterMappings.Register();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IDbConnection>(x => new System.Data.SqlClient.SqlConnection("Server=localhost\\SQLEXPRESS;Database=passaro;Trusted_Connection=True;"));
 
             //Oferta
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
