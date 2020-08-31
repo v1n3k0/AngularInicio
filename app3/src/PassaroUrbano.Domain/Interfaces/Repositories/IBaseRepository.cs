@@ -2,18 +2,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace PassaroUrbano.Domain.Interfaces.Repositories
 {
     public interface IBaseRepository<T> : IDisposable where T : BaseEntity
     {
-        void Adcionar(ref T entity);
+        void Adicionar(T entity);
+        Task AdicionarAsync(T entity);
         bool Atualizar(T entity);
-        bool Remover(int id);
-        bool Excluir(int id);
-        T Obter(Expression<Func<T, bool>> predicate);
+        Task<bool> AtualizarAsync(T entity);
         T ObterPorId(int id);
-        IEnumerable<T> ObterTodos();
-        IEnumerable<T> ObterLista(Expression<Func<T, bool>> predicate);
+        Task<T> ObterPorIdAsync(int id);
+        T ObterPor(Expression<Func<T, bool>> predicate);
+        Task<T> ObterPorAsync(Expression<Func<T, bool>> predicate);
+        bool Remover(int id);
+        Task<bool> RemoverAsync(int id);
+        bool Excluir(int id);
+        Task<bool> ExcluirAsync(int id);
+        IEnumerable<T> ListarTodos();
+        Task<IEnumerable<T>> ListarTodosAsync();
+        IEnumerable<T> ListarPor(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> ListarPorAsync(Expression<Func<T, bool>> predicate);
     }
 }

@@ -21,7 +21,7 @@ namespace PassaroUrbano.Domain.Services
 
         public IEnumerable<T> ObterTodos()
         {
-            return _baseRepository.ObterTodos();
+            return _baseRepository.ListarTodos();
         }
 
         public bool Remover(int id)

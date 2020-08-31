@@ -3,6 +3,7 @@ using PassaroUrbano.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace PassaroUrbano.Infra.Data.Repositories
 {
@@ -16,11 +17,18 @@ namespace PassaroUrbano.Infra.Data.Repositories
             _unitOfWork = unitOfWork;
         }
 
-        public void Adcionar(ref T entity)
+        public void Adicionar(T entity)
         {
             var id = _unitOfWork.Connection.Insert(entity, _unitOfWork.Transaction);
 
             entity.Id = (int) id;
+        }
+
+        public async Task AdicionarAsync(T entity)
+        {
+            var id = await _unitOfWork.Connection.InsertAsync(entity, _unitOfWork.Transaction);
+
+            entity.Id = (int)id;
         }
 
         public bool Atualizar(T entity)
@@ -28,24 +36,9 @@ namespace PassaroUrbano.Infra.Data.Repositories
             return _unitOfWork.Connection.Update(entity, _unitOfWork.Transaction);
         }
 
-        public bool Excluir(int id)
+        public async Task<bool> AtualizarAsync(T entity)
         {
-            T entity = ObterPorId(id);
-
-            if (entity == null)
-                throw new Exception(REGISTRONAOENCONTRADO);
-
-            return _unitOfWork.Connection.Delete(entity, _unitOfWork.Transaction);
-        }
-
-        public T Obter(Expression<Func<T, bool>> predicate)
-        {
-            return _unitOfWork.Connection.FirstOrDefault(predicate, _unitOfWork.Transaction);
-        }
-
-        public IEnumerable<T> ObterLista(Expression<Func<T, bool>> predicate)
-        {
-            return _unitOfWork.Connection.Select<T>(predicate, _unitOfWork.Transaction);
+            return await _unitOfWork.Connection.UpdateAsync(entity, _unitOfWork.Transaction);
         }
 
         public T ObterPorId(int id)
@@ -53,9 +46,19 @@ namespace PassaroUrbano.Infra.Data.Repositories
             return _unitOfWork.Connection.Get<T>(id, _unitOfWork.Transaction);
         }
 
-        public IEnumerable<T> ObterTodos()
+        public async Task<T> ObterPorIdAsync(int id)
         {
-            return _unitOfWork.Connection.GetAll<T>(_unitOfWork.Transaction);
+            return await _unitOfWork.Connection.GetAsync<T>(id, _unitOfWork.Transaction);
+        }
+
+        public T ObterPor(Expression<Func<T, bool>> predicate)
+        {
+            return _unitOfWork.Connection.FirstOrDefault(predicate, _unitOfWork.Transaction);
+        }
+
+        public async Task<T> ObterPorAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _unitOfWork.Connection.FirstOrDefaultAsync(predicate, _unitOfWork.Transaction);
         }
 
         public bool Remover(int id)
@@ -68,6 +71,58 @@ namespace PassaroUrbano.Infra.Data.Repositories
             entity.DataRemocao = DateTime.Now;
 
             return _unitOfWork.Connection.Update(entity, _unitOfWork.Transaction);
+        }
+
+        public async Task<bool> RemoverAsync(int id)
+        {
+            T entity = await ObterPorIdAsync(id);
+
+            if (entity == null)
+                throw new Exception(REGISTRONAOENCONTRADO);
+
+            entity.DataRemocao = DateTime.Now;
+
+            return await _unitOfWork.Connection.UpdateAsync(entity, _unitOfWork.Transaction);
+        }
+
+        public bool Excluir(int id)
+        {
+            T entity = ObterPorId(id);
+
+            if (entity == null)
+                throw new Exception(REGISTRONAOENCONTRADO);
+
+            return _unitOfWork.Connection.Delete(entity, _unitOfWork.Transaction);
+        }
+
+        public async Task<bool> ExcluirAsync(int id)
+        {
+            T entity = await ObterPorIdAsync(id);
+
+            if (entity == null)
+                throw new Exception(REGISTRONAOENCONTRADO);
+
+            return await _unitOfWork.Connection.DeleteAsync(entity, _unitOfWork.Transaction);
+        }
+
+        public IEnumerable<T> ListarTodos()
+        {
+            return _unitOfWork.Connection.GetAll<T>(_unitOfWork.Transaction);
+        }
+
+        public async Task<IEnumerable<T>> ListarTodosAsync()
+        {
+            return await _unitOfWork.Connection.GetAllAsync<T>(_unitOfWork.Transaction);
+        }
+
+        public IEnumerable<T> ListarPor(Expression<Func<T, bool>> predicate)
+        {
+            return _unitOfWork.Connection.Select<T>(predicate, _unitOfWork.Transaction);
+        }
+
+        public async Task<IEnumerable<T>> ListarPorAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _unitOfWork.Connection.SelectAsync<T>(predicate, _unitOfWork.Transaction);
         }
 
         public void Dispose()
