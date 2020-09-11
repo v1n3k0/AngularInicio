@@ -2,6 +2,7 @@
 using PassaroUrbano.Domain.Interfaces.Domain;
 using PassaroUrbano.Domain.Interfaces.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PassaroUrbano.Domain.Services
 {
@@ -19,14 +20,19 @@ namespace PassaroUrbano.Domain.Services
             return _baseRepository.ObterPorId(id);
         }
 
-        public IEnumerable<T> ObterTodos()
+        public async Task<T> ObterPorIdAsync(int id)
+        {
+            return await _baseRepository.ObterPorIdAsync(id);
+        }
+
+        public IEnumerable<T> ListarTodos()
         {
             return _baseRepository.ListarTodos();
         }
 
-        public bool Remover(int id)
+        public async Task<IEnumerable<T>> ListarTodosAsync()
         {
-            return _baseRepository.Remover(id);
+            return await _baseRepository.ListarTodosAsync();
         }
     }
 }

@@ -20,18 +20,12 @@ namespace PassaroUrbano.Application.AppServices.Oferta
             return (ObterOfertaResponseViewModel) response;
         }
 
-        public IEnumerable<ObterOfertaResponseViewModel> ObterTodos()
+        public IEnumerable<ObterOfertaResponseViewModel> ListarTodos()
         {
-            IEnumerable<Domain.Entities.Oferta.Oferta> response = _ofertaService.ObterTodos();
+            IEnumerable<Domain.Entities.Oferta.Oferta> response = _ofertaService.ListarTodos();
 
             return (IEnumerable<ObterOfertaResponseViewModel>)response;
         }
 
-        public bool Remover(int id)
-        {
-            bool response = _ofertaService.Remover(id);
-
-            return response;
-        }
     }
 }
