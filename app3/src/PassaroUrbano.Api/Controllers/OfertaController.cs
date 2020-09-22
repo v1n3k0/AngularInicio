@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PassaroUrbano.Application.Interfaces.Oferta;
-using PassaroUrbano.Application.ViewModel.Oferta;
+using System.Threading.Tasks;
 
 namespace PassaroUrbano.Api.Controllers
 {
@@ -14,10 +14,22 @@ namespace PassaroUrbano.Api.Controllers
             _ofertaAppService = ofertaAppService;
         }
 
-        [HttpGet("")]
-        public ActionResult Get(int id)
+        [HttpGet("ObterPorId/{id}")]
+        public async Task<ActionResult> ObterPorIdAsync(int id)
         {
-            return Ok(_ofertaAppService.Obter(id));
+            return Ok(await _ofertaAppService.ObterAsync(id));
+        }
+
+        [HttpGet("ListarTodosAsync")]
+        public async Task<ActionResult> ListarTodosAsync()
+        {
+            return Ok(await _ofertaAppService.ListarTodosAsync());
+        }
+
+        [HttpGet("ListarPorCategoria/{categoria}")]
+        public async Task<ActionResult> ListarPorCategoriaAsync(string categoria)
+        {
+            return Ok(await _ofertaAppService.ListarPorCategoriaAsync(categoria));
         }
     }
 }
