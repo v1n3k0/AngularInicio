@@ -37,5 +37,11 @@ namespace PassaroUrbano.Api.Controllers
         {
             return Ok(await _ofertaAppService.ObterOndeFicaPorIdOfertaAsync(idOferta));
         }
+
+        [HttpGet("{idOferta}/ComoUsar")]
+        public async Task<ActionResult> ObterComoUsarPorIdAsync(int idOferta)
+        {
+            return Ok(await _ofertaAppService.ObterComoUsarPorIdAsync(idOferta));
+        }
     }
 }

@@ -67,5 +67,11 @@ namespace PassaroUrbano.Application.AppServices.Oferta
             return (OndeFicaViewModel)response;
         }
 
+        public async Task<ComoUsarViewModel> ObterComoUsarPorIdAsync(int idOferta)
+        {
+            var response = await _ofertaService.ObterComComoUsarPorIdAsync(idOferta);
+
+            return (ComoUsarViewModel)response.ComoUsar;
+        }
     }
 }
