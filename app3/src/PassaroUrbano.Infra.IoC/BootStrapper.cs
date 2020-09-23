@@ -29,12 +29,14 @@ namespace PassaroUrbano.Infra.IoC
         {
             //Oferta
             services.AddTransient<IOfertaAppService, OfertaAppService>();
+            services.AddTransient<IOndeFicaService, OndeFicaService>();
         }
 
         private static void Domain(IServiceCollection services)
         {
             //Oferta
             services.AddTransient<IOfertaService, OfertaService>();
+            services.AddTransient<IOndeFicaService, OndeFicaService>();
 
             //Pedido
             services.AddTransient<IPedidoService, PedidoService>();

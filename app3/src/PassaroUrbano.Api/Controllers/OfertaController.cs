@@ -14,10 +14,10 @@ namespace PassaroUrbano.Api.Controllers
             _ofertaAppService = ofertaAppService;
         }
 
-        [HttpGet("ObterPorId/{id}")]
-        public async Task<ActionResult> ObterPorIdAsync(int id)
+        [HttpGet("ObterPorId/{idOferta}")]
+        public async Task<ActionResult> ObterPorIdAsync(int idOferta)
         {
-            return Ok(await _ofertaAppService.ObterAsync(id));
+            return Ok(await _ofertaAppService.ObterAsync(idOferta));
         }
 
         [HttpGet("ListarTodosAsync")]
@@ -26,10 +26,16 @@ namespace PassaroUrbano.Api.Controllers
             return Ok(await _ofertaAppService.ListarTodosAsync());
         }
 
-        [HttpGet("ListarPorCategoria/{categoria}")]
+        [HttpGet("Categoria/{categoria}")]
         public async Task<ActionResult> ListarPorCategoriaAsync(string categoria)
         {
             return Ok(await _ofertaAppService.ListarPorCategoriaAsync(categoria));
+        }
+
+        [HttpGet("{idOferta}/OndeFica")]
+        public async Task<ActionResult> ObterOndeFicaPorIdOfertaAsync(int idOferta)
+        {
+            return Ok(await _ofertaAppService.ObterOndeFicaPorIdOfertaAsync(idOferta));
         }
     }
 }

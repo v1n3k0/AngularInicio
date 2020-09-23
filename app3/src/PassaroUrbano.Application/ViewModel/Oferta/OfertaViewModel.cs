@@ -2,7 +2,7 @@
 {
     public class ObterOfertaResponseViewModel
     {
-        public int Id { get; set; }
+        public int IdOferta { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Anuciante { get; set; }
@@ -13,7 +13,7 @@
         {
             return new ObterOfertaResponseViewModel()
             {
-                Id = oferta.Id,
+                IdOferta = oferta.Id,
                 Titulo = oferta.Titulo,
                 Descricao = oferta.Descricao,
                 Anuciante = oferta.Anuciante,

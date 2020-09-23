@@ -1,5 +1,6 @@
 ﻿using PassaroUrbano.Application.Interfaces.Oferta;
 using PassaroUrbano.Application.ViewModel.Oferta;
+using PassaroUrbano.Domain.Entities.Oferta;
 using PassaroUrbano.Domain.Enum;
 using PassaroUrbano.Domain.Interfaces.Domain.Oferta;
 using System;
@@ -12,9 +13,14 @@ namespace PassaroUrbano.Application.AppServices.Oferta
     public class OfertaAppService : IOfertaAppService
     {
         private readonly IOfertaService _ofertaService;
-        public OfertaAppService(IOfertaService ofertaService)
+        private readonly IOndeFicaService _ondeFicaService;
+
+        public OfertaAppService(
+            IOfertaService ofertaService,
+            IOndeFicaService ondeFicaService)
         {
             _ofertaService = ofertaService;
+            _ondeFicaService = ondeFicaService;
         }
 
         public ObterOfertaResponseViewModel Obter(int id)
@@ -52,6 +58,13 @@ namespace PassaroUrbano.Application.AppServices.Oferta
             IEnumerable<Domain.Entities.Oferta.Oferta> response = await _ofertaService.ListarPorCategoriaAsync(eCategoria);
 
             return response.Select(x => (ObterOfertaResponseViewModel)x);
+        }
+
+        public async Task<OndeFicaViewModel> ObterOndeFicaPorIdOfertaAsync(int idOferta)
+        {
+            OndeFica response = await _ondeFicaService.ObterPorIdOfertaAsync(idOferta);
+
+            return (OndeFicaViewModel)response;
         }
 
     }
