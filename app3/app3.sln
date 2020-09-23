@@ -27,7 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Api", "src\Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Infra.IoC", "src\PassaroUrbano.Infra.IoC\PassaroUrbano.Infra.IoC.csproj", "{2B78E2A2-5A1E-4EEF-AE2A-FC9A7467805E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassaroUrbano.Test", "test\PassaroUrbano.Test\PassaroUrbano.Test.csproj", "{CFCC0D9D-588D-4477-873C-52332F02C972}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PassaroUrbano.Test", "test\PassaroUrbano.Test\PassaroUrbano.Test.csproj", "{CFCC0D9D-588D-4477-873C-52332F02C972}"
+	ProjectSection(ProjectDependencies) = postProject
+		{69372033-9735-4D3D-80CF-5719A57127D0} = {69372033-9735-4D3D-80CF-5719A57127D0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
