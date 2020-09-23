@@ -20,16 +20,28 @@ namespace PassaroUrbano.Api.Controllers
             return Ok(await _ofertaAppService.ObterAsync(idOferta));
         }
 
-        [HttpGet("ListarTodosAsync")]
+        [HttpGet("ListarTodos")]
         public async Task<ActionResult> ListarTodosAsync()
         {
             return Ok(await _ofertaAppService.ListarTodosAsync());
         }
 
-        [HttpGet("Categoria/{categoria}")]
+        [HttpGet("ListarPorCategoria/{categoria}")]
         public async Task<ActionResult> ListarPorCategoriaAsync(string categoria)
         {
             return Ok(await _ofertaAppService.ListarPorCategoriaAsync(categoria));
+        }
+
+        [HttpGet("ListarPorDestaque/{destaque}")]
+        public async Task<ActionResult> ListarPorDestaqueAsync(bool destaque)
+        {
+            return Ok(await _ofertaAppService.ListarPorDestaqueAsync(destaque));
+        }
+
+        [HttpGet("ListarPorDescricao/{descricao}")]
+        public async Task<ActionResult> ListarPorDescricaoAsync(string descricao)
+        {
+            return Ok(await _ofertaAppService.ListarPorDescricaoAsync(descricao));
         }
 
         [HttpGet("{idOferta}/OndeFica")]

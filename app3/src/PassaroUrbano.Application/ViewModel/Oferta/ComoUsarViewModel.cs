@@ -2,14 +2,14 @@
 
 namespace PassaroUrbano.Application.ViewModel.Oferta
 {
-    public class ComoUsarViewModel
+    public class ObterComoUsarViewModel
     {
         public int IdComoUsar { get; set; }
         public string Descricao { get; set; }
 
-        public static explicit operator ComoUsarViewModel(ComoUsar comoUsar)
+        public static explicit operator ObterComoUsarViewModel(ComoUsar comoUsar)
         {
-            return new ComoUsarViewModel()
+            return new ObterComoUsarViewModel()
             {
                 IdComoUsar = comoUsar.Id,
                 Descricao = comoUsar.Descricao

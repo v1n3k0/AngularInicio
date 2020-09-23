@@ -21,6 +21,20 @@ namespace PassaroUrbano.Domain.Services.Oferta
             return response;
         }
 
+        public async Task<IEnumerable<Entities.Oferta.Oferta>> ListarPorDestaqueAsync(bool destaque)
+        {
+            IEnumerable<Entities.Oferta.Oferta> response = await _baseRepository.ListarPorAsync(x => x.Destaque == destaque);
+
+            return response;
+        }
+
+        public async Task<IEnumerable<Entities.Oferta.Oferta>> ListarPorDescricaoAsync(string descricao)
+        {
+            IEnumerable<Entities.Oferta.Oferta> response = await _baseRepository.ListarPorAsync(x => x.Descricao.Contains(descricao));
+
+            return response;
+        }
+
         public async Task<Entities.Oferta.Oferta> ObterComComoUsarPorIdAsync(int idOferta)
         {
             Entities.Oferta.Oferta response = await _ofertaRepository.ObterComComoUsarPorIdAsync(idOferta);

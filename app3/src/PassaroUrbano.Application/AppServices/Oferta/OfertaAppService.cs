@@ -60,18 +60,32 @@ namespace PassaroUrbano.Application.AppServices.Oferta
             return response.Select(x => (ObterOfertaResponseViewModel)x);
         }
 
-        public async Task<OndeFicaViewModel> ObterOndeFicaPorIdOfertaAsync(int idOferta)
+        public async Task<IEnumerable<ObterOfertaResponseViewModel>> ListarPorDestaqueAsync(bool destaque)
+        {
+            IEnumerable<Domain.Entities.Oferta.Oferta> response = await _ofertaService.ListarPorDestaqueAsync(destaque);
+
+            return response.Select(x => (ObterOfertaResponseViewModel)x);
+        }
+
+        public async Task<IEnumerable<ObterOfertaResponseViewModel>> ListarPorDescricaoAsync(string descricao)
+        {
+            IEnumerable<Domain.Entities.Oferta.Oferta> response = await _ofertaService.ListarPorDescricaoAsync(descricao);
+
+            return response.Select(x => (ObterOfertaResponseViewModel)x);
+        }
+
+        public async Task<ObterOndeFicaViewModel> ObterOndeFicaPorIdOfertaAsync(int idOferta)
         {
             OndeFica response = await _ondeFicaService.ObterPorIdOfertaAsync(idOferta);
 
-            return (OndeFicaViewModel)response;
+            return (ObterOndeFicaViewModel)response;
         }
 
-        public async Task<ComoUsarViewModel> ObterComoUsarPorIdAsync(int idOferta)
+        public async Task<ObterComoUsarViewModel> ObterComoUsarPorIdAsync(int idOferta)
         {
             var response = await _ofertaService.ObterComComoUsarPorIdAsync(idOferta);
 
-            return (ComoUsarViewModel)response.ComoUsar;
+            return (ObterComoUsarViewModel)response.ComoUsar;
         }
     }
 }

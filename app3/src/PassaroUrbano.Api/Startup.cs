@@ -33,7 +33,7 @@ namespace PassaroUrbano.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Passaro Urbano");
                 c.RoutePrefix = string.Empty;
             });
 

@@ -2,14 +2,14 @@
 
 namespace PassaroUrbano.Application.ViewModel.Oferta
 {
-    public class OndeFicaViewModel
+    public class ObterOndeFicaViewModel
     {
         public int IdOndeFica { get; set; }
         public string Descricao { get; set; }
 
-        public static explicit operator OndeFicaViewModel(OndeFica ondeFica)
+        public static explicit operator ObterOndeFicaViewModel(OndeFica ondeFica)
         {
-            return new OndeFicaViewModel()
+            return new ObterOndeFicaViewModel()
             {
                 IdOndeFica = ondeFica.Id,
                 Descricao = ondeFica.Descricao

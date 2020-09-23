@@ -11,7 +11,9 @@ namespace PassaroUrbano.Application.Interfaces.Oferta
         IEnumerable<ObterOfertaResponseViewModel> ListarTodos();
         Task<IEnumerable<ObterOfertaResponseViewModel>> ListarTodosAsync();
         Task<IEnumerable<ObterOfertaResponseViewModel>> ListarPorCategoriaAsync(string categoria);
-        Task<OndeFicaViewModel> ObterOndeFicaPorIdOfertaAsync(int idOferta);
-        Task<ComoUsarViewModel> ObterComoUsarPorIdAsync(int idOferta);
+        Task<IEnumerable<ObterOfertaResponseViewModel>> ListarPorDestaqueAsync(bool destaque);
+        Task<IEnumerable<ObterOfertaResponseViewModel>> ListarPorDescricaoAsync(string descricao);
+        Task<ObterOndeFicaViewModel> ObterOndeFicaPorIdOfertaAsync(int idOferta);
+        Task<ObterComoUsarViewModel> ObterComoUsarPorIdAsync(int idOferta);
     }
 }
