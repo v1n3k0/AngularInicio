@@ -9,8 +9,9 @@ namespace PassaroUrbano.Infra.Cache
         {
             Cache = new MemoryCache(new MemoryCacheOptions
             {
-                //2MB
-                SizeLimit = 2048
+                //20MB
+                SizeLimit = 20480,
+                CompactionPercentage = 0.8
             });
         }
     }

@@ -12,7 +12,7 @@ namespace PassaroUrbano.Infra.Data.Repositories.Oferta
 {
     public class CategoriaRepository : BaseRepository<Categoria>, ICategoriaRepository
     {
-        private readonly MemoryCache _cache;
+        private readonly IMemoryCache _cache;
 
         public CategoriaRepository(
             IUnitOfWork unitOfWork,
@@ -27,7 +27,7 @@ namespace PassaroUrbano.Infra.Data.Repositories.Oferta
 
             var response = await _cache.GetOrCreateAsync(cacheKey, async entry =>
             {
-                entry.SlidingExpiration = TimeSpan.FromSeconds(10);
+                entry.SlidingExpiration = TimeSpan.FromSeconds(30);
                 entry.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(600);
                 entry.Size = 1024;
 
