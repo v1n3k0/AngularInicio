@@ -55,5 +55,11 @@ namespace PassaroUrbano.Api.Controllers
         {
             return Ok(await _ofertaAppService.ObterComoUsarPorIdAsync(idOferta));
         }
+
+        [HttpGet("ListarTodosCategoria")]
+        public async Task<ActionResult> ListarTodosCategoriaAsync()
+        {
+            return Ok(await _ofertaAppService.ListarTodosCategoriaAsync());
+        }
     }
 }

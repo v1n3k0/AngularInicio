@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PassaroUrbano.Domain\PassaroUrbano.Domain.csproj" />
+    <ProjectReference Include="..\PassaroUrbano.Infra.Cache\PassaroUrbano.Infra.Cache.csproj" />
   </ItemGroup>
 
 </Project>

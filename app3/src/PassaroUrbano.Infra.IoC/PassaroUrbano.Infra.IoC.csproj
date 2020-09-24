@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PassaroUrbano.Application\PassaroUrbano.Application.csproj" />
+    <ProjectReference Include="..\PassaroUrbano.Infra.Cache\PassaroUrbano.Infra.Cache.csproj" />
     <ProjectReference Include="..\PassaroUrbano.Infra.Data\PassaroUrbano.Infra.Data.csproj" />
   </ItemGroup>
 

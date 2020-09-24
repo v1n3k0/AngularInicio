@@ -8,6 +8,7 @@ using PassaroUrbano.Domain.Interfaces.Repositories.Oferta;
 using PassaroUrbano.Domain.Interfaces.Repositories.Pedido;
 using PassaroUrbano.Domain.Services.Oferta;
 using PassaroUrbano.Domain.Services.Pedido;
+using PassaroUrbano.Infra.Cache;
 using PassaroUrbano.Infra.Data;
 using PassaroUrbano.Infra.Data.Repositories;
 using PassaroUrbano.Infra.Data.Repositories.Oferta;
@@ -37,6 +38,7 @@ namespace PassaroUrbano.Infra.IoC
             //Oferta
             services.AddTransient<IOfertaService, OfertaService>();
             services.AddTransient<IOndeFicaService, OndeFicaService>();
+            services.AddTransient<ICategoriaService, CategoriaService>();
 
             //Pedido
             services.AddTransient<IPedidoService, PedidoService>();
@@ -48,6 +50,7 @@ namespace PassaroUrbano.Infra.IoC
             RegisterMappings.Register();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IDbConnection>(x => new System.Data.SqlClient.SqlConnection("Server=localhost\\SQLEXPRESS;Database=passaro;Trusted_Connection=True;"));
+            services.AddSingleton<CustomMemoryCache>();
 
             //Oferta
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();

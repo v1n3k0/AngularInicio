@@ -14,13 +14,16 @@ namespace PassaroUrbano.Application.AppServices.Oferta
     {
         private readonly IOfertaService _ofertaService;
         private readonly IOndeFicaService _ondeFicaService;
+        private readonly ICategoriaService _categoriaService;
 
         public OfertaAppService(
             IOfertaService ofertaService,
-            IOndeFicaService ondeFicaService)
+            IOndeFicaService ondeFicaService,
+            ICategoriaService categoriaService)
         {
             _ofertaService = ofertaService;
             _ondeFicaService = ondeFicaService;
+            _categoriaService = categoriaService;
         }
 
         public ObterOfertaResponseViewModel Obter(int id)
@@ -86,6 +89,13 @@ namespace PassaroUrbano.Application.AppServices.Oferta
             var response = await _ofertaService.ObterComComoUsarPorIdAsync(idOferta);
 
             return (ObterComoUsarViewModel)response.ComoUsar;
+        }
+
+        public async Task<IEnumerable<ObterCategoriaViewModel>> ListarTodosCategoriaAsync()
+        {
+            var response = await _categoriaService.ListarTodosAsync();
+
+            return response.Select(x => (ObterCategoriaViewModel)x);
         }
     }
 }
