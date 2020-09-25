@@ -61,6 +61,16 @@ namespace PassaroUrbano.Infra.Data.Repositories
             return await _unitOfWork.Connection.FirstOrDefaultAsync(predicate, _unitOfWork.Transaction);
         }
 
+        public virtual bool ExistePor(Expression<Func<T, bool>> predicate)
+        {
+            return _unitOfWork.Connection.Any<T>(predicate, _unitOfWork.Transaction);
+        }
+
+        public virtual async Task<bool> ExistePorAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _unitOfWork.Connection.AnyAsync<T>(predicate, _unitOfWork.Transaction);
+        }
+
         public virtual bool Remover(int id)
         {
             T entity = ObterPorId(id);

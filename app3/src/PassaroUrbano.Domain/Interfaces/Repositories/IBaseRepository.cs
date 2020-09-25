@@ -16,6 +16,8 @@ namespace PassaroUrbano.Domain.Interfaces.Repositories
         Task<T> ObterPorIdAsync(int id);
         T ObterPor(Expression<Func<T, bool>> predicate);
         Task<T> ObterPorAsync(Expression<Func<T, bool>> predicate);
+        bool ExistePor(Expression<Func<T, bool>> predicate);
+        Task<bool> ExistePorAsync(Expression<Func<T, bool>> predicate);
         bool Remover(int id);
         Task<bool> RemoverAsync(int id);
         bool Excluir(int id);
