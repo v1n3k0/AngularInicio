@@ -52,11 +52,15 @@ namespace PassaroUrbano.Test.Oferta
         [InlineData(100)]
         public async Task DeveObterPorIdAsync(int id)
         {
-            _ofertaRepository.Setup(r => r.ObterPorIdAsync(id)).ReturnsAsync(_oferta);
+            _ofertaRepository
+                .Setup(r => r.ObterPorIdAsync(id))
+                .ReturnsAsync(_oferta);
 
-            var response = await _ofertaService.ObterPorIdAsync(id);
+            var response = await _ofertaService
+                .ObterPorIdAsync(id);
 
-            _ofertaRepository.Verify(r => r.ObterPorIdAsync(It.Is<int>(x => x == id)), Times.Once());
+            _ofertaRepository
+                .Verify(r => r.ObterPorIdAsync(It.Is<int>(x => x == id)), Times.Once());
 
             Assert.Equal(_oferta, response);
         }
@@ -66,12 +70,14 @@ namespace PassaroUrbano.Test.Oferta
         [InlineData(false)]
         public async Task DeveListarPorDestaqueAsync(bool destaque)
         {
-            var ofertas = _ofertas.Where(x => x.Destaque == destaque);
+            var ofertas = _ofertas
+                .Where(x => x.Destaque == destaque);
 
             _ofertaRepository.Setup(r => r.ListarPorAsync(It.IsAny<Expression<Func<Domain.Entities.Oferta.Oferta, bool>>>()))
                 .ReturnsAsync(ofertas);
 
-            var response = await _ofertaService.ListarPorDestaqueAsync(destaque);
+            var response = await _ofertaService
+                .ListarPorDestaqueAsync(destaque);
 
             Assert.True(response.Count() == ofertas.Count());
         }
